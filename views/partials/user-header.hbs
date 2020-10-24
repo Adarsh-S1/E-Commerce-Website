@@ -1,4 +1,4 @@
-    <header style="background-color: #4789f5; "><nav  class="navbar navbar-expand-lg " >
+    <header style="background-color:#5a8ce0; "><nav  class="navbar navbar-expand-lg " >
   <button  class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"  aria-expanded="false" aria-label="Toggle navigation">
     <span style="background-color: white;" class="navbar-toggler-icon"></span>
   </button>
@@ -19,7 +19,7 @@
       {{/if}}
     </ul>
 <div class="dropdown">
-  <button style="border-color: #4789f5; margin-left: -10px; background-color: #4789f5; " class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button style="border-color: #5a8ce0; margin-left: -10px; background-color:#5a8ce0; " class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{# if user}}
     {{user.Name}}
     {{else}}
@@ -27,7 +27,7 @@
     {{/if}}
 
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <div style="min-width: 1rem;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
        {{# if user}}
     <a id="logout" class="dropdown-item" href="/logout">Logout</a>
     {{else}}
