@@ -1,25 +1,25 @@
-    <header><nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <header style="background-color: #4789f5; "><nav  class="navbar navbar-expand-lg " >
+  <button  class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"  aria-expanded="false" aria-label="Toggle navigation">
+    <span style="background-color: white;" class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="/">Shopping Cart</a>
+  <h3><a style="color: white;" class="navbar-brand ml-4" href="/">Shopping Cart</a></h3>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+  <div  class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/" style="color: #000;">Products <span class="sr-only">(current)</span></a>
+      <li class="nav-item ">
+        <a  class="nav-link" href="/" style="font-size: 18px; color: white;">Products <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/cart">Cart <span class="badge badge-success" id="cart-count">{{cartCount}}</span></a>
+        <a style="color: white; font-size: 18px; " class="nav-link" href="/cart">Cart <span class="badge badge-success" id="cart-count">{{cartCount}}</span></a>
       </li>
       {{#if user}}
       <li class="nav-item">
-        <a class="nav-link" href="#">Orders</a>
+        <a style="color: white; font-size: 18px; " class="nav-link" href="/orders">Orders</a>
       </li>
       {{/if}}
     </ul>
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button style="border-color: #4789f5; margin-left: -10px; background-color: #4789f5; " class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{# if user}}
     {{user.Name}}
     {{else}}
@@ -29,9 +29,9 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
        {{# if user}}
-    <a class="dropdown-item" href="/logout">Logout</a>
+    <a id="logout" class="dropdown-item" href="/logout">Logout</a>
     {{else}}
-    <a class="dropdown-item" href="/login">Login</a>
+    <a  class="dropdown-item" href="/login">Login</a>
     {{/if}}
   
   </div>
