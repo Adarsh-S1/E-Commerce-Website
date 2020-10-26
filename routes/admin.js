@@ -33,7 +33,6 @@ router.post('/add-product',(req,res)=>{
 })
 router.get('/delete-product/:id',(req,res)=>{
 let proId=req.params.id
-console.log(proId)
 productHelpers.deleteProduct(proId).then((response)=>{
   res.redirect('/admin/')
 })
@@ -55,5 +54,11 @@ router.post('/edit-product/:id',(req,res)=>{
   
     }
   })
+})
+router.get('/all-orders',async (req,res)=>{
+  let userorders=await productHelpers.getOrders(req.body)
+  let findex=hbsHelpers.formatIndex;
+  console.log(userorders," Orders")
+  res.render('admin/all-orders.hbs',{admin:true,helpers:{findex},userorders})
 })
 module.exports = router;

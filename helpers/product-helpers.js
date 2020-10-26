@@ -1,6 +1,7 @@
 var db=require('../config/connection')
 var collection=require('../config/collections')
 const { response } = require('express')
+const { placeOrder, getUserOrders } = require('./user-helper')
 var objectId=require('mongodb').ObjectID
 module.exports={
     addProduct:(product,callback)=>{
@@ -45,5 +46,13 @@ module.exports={
                 resolve()
             })
         })
+    },
+    getOrders:()=>{
+        return new Promise((resolve,reject)=>{
+        let orders= db.get().collection(collection.ORDER_COLLECTION)
+        .find(placeOrder.orderObject).toArray()
+             resolve(orders)
+         })
+       
     }
 }

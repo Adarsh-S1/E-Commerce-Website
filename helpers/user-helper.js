@@ -201,6 +201,7 @@ module.exports={
        let status=order['payment-method']==='COD'?'placed':'pending'
        let orderObj={
        deliveryDetails:{
+         name:order.name,
          mobile:order.mobile,
          address:order.address,
          pincode:order.pincode
@@ -263,7 +264,6 @@ module.exports={
             }
           }
         ]).toArray()
-        console.log(orderItems);
         resolve(orderItems)
       })
     },
