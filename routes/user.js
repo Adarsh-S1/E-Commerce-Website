@@ -4,7 +4,7 @@ var router = express.Router();
 const productHelpers = require('../helpers/product-helpers');
 const userHelpers=require("../helpers/user-helper")
 const verifyLogin=(req,res,next)=>{
-  if(req.session.loggedIn){
+  if(req.session.userLoggedIn){
     next()
   }else{
     res.redirect('/login')
@@ -22,12 +22,12 @@ cartCount=await userHelpers.getCartCount(req.session.user._id)
   })
 });
 router.get('/login',(req,res)=>{
-  if(req.session.loggedIn)
+  if(req.session.user)
   {
     res.redirect('/')
   }else{
-   res.render('user/login',{"loginErr":req.session.loginErr})
-   req.session.loginErr=false
+   res.render('user/login',{"loginErr":req.session.userLoginErr})
+   req.session.userLoginErr=false
   }
   })
 router.get('/signup',(req,res)=>{
@@ -36,25 +36,26 @@ router.get('/signup',(req,res)=>{
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
     console.log(response);
-    req.session.loggedIn=true
     req.session.user=response
+    req.session.user.loggedIn=true
     res.redirect('/')
   })
 })
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
-      req.session.loggedIn=true
       req.session.user=response.user
+      req.session.userLoggedIn=true
       res.redirect('/')
     }else{
-      req.session.loginErr="Invalid Username or Password"
+      req.session.userLoginErr="Invalid Username or Password"
       res.redirect('/login')
     }
   })
 })
 router.get('/logout',(req,res)=>{
-  req.session.destroy()
+  req.session.user=null
+  req.session.userLoggedIn=false
   res.redirect('/')
 })
 router.get('/cart',verifyLogin,async(req,res)=>{

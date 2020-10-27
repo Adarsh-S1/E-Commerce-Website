@@ -5,11 +5,13 @@
   <thead>
     <tr>
       <th scope="col">No</th>
+      <th scope="col">Date</th>
       <th scope="col">Name</th>
       <th scope="col">Products</th>
       <th scope="col">Delivery Details</th>
       <th scope="col">Amount</th>
       <th scope="col">Payment Method</th>
+      <th scope="col">Status</th>
       <th scope="col">Shipping</th>
 </tr>
   </thead>
@@ -18,11 +20,13 @@
      {{#each userorders}}
     <tr>
       <td scope="row">{{findex @index}}</td>
-      <td>{{this.deliveryDetails.name}}</td>
+      <td>{{this.date}}</td>
+      <td>{{this.deliveryDetails.name}} ({{this.userId}})</td>
       <td>{{this.products}}</td>
-                <td>{{this.deliveryDetails.address}}<br>{{this.deliveryDetails.pincode}}<br>{{this.deliveryDetails.mobile}}</td>
+                <td>{{this.deliveryDetails.address}},<br>{{this.deliveryDetails.pincode}},<br>{{this.deliveryDetails.mobile}}</td>
                 <td>₹{{this.totalAmount}}</td>
                 <td>{{this.paymentMethod}}</td>
+                <td>{{this.status}}</td>
    <a href="/ship"><td><button class="btn btn-success"><b>Ship</b></button></td></a>   
     </tr>
      {{/each}}

@@ -58,7 +58,7 @@ router.post('/edit-product/:id',(req,res)=>{
 router.get('/all-orders',async (req,res)=>{
   let userorders=await productHelpers.getOrders(req.body)
   let findex=hbsHelpers.formatIndex;
-  console.log(userorders," Orders")
+  console.log(userorders,"---Orders")
   res.render('admin/all-orders.hbs',{admin:true,helpers:{findex},userorders})
 })
 module.exports = router;

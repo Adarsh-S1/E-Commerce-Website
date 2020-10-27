@@ -1,7 +1,7 @@
 var db=require('../config/connection')
 var collection=require('../config/collections')
 const { response } = require('express')
-const { placeOrder, getUserOrders } = require('./user-helper')
+const { placeOrder} = require('./user-helper')
 var objectId=require('mongodb').ObjectID
 module.exports={
     addProduct:(product,callback)=>{
