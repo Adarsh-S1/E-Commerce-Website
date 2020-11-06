@@ -1,23 +1,89 @@
-<div class="row">
-    <div class="col-md-6 m-auto">
-        <div class="container mt-5 pl-5">
-            <h2 class="text-center">Create new account</h2>
-          <form action="/signup" method="post">
-              <div class="form-group">
-                  <label for="">Name</label>
-                  <input type="text" name="Name" class="form-control" placeholder="Enter Name">
-              </div>
-              <div class="form-group">
-                  <label for="">Email</label>
-                  <input type="email" name="Email" class="form-control" placeholder="Enter E-mail">
-              </div>
-               <div class="form-group">
-                  <label for="">Password</label>
-                  <input type="password" name="Password" class="form-control" placeholder="Password">
-              </div>
-          <a href="/login">Already have account ?</a>
-          <button type="submit" class="btn btn-primary float-right">Signup</button>
-          </form>
+
+     <link rel="shortcut icon" type="image/x-icon" href="../userlogin/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../userlogin/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" type="text/css" href="../userlogin/css/fontawesome-all.min.css">
+    <!-- Vegas CSS -->
+    <link rel="stylesheet" type="text/css" href="../userlogin/css/vegas.min.css">
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" type="text/css" href="../userlogin/font/flaticon.css">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="../userlogin/css/loginstyle.css">
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->      
+    <section class="fxt-template-animation fxt-template-layout29">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide" data-vegas-options='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "../userlogin/img/bg29-l-3.jpg"}]}'>                  
+                    <div class="fxt-page-switcher">
+                        <a href="/login" class="switcher-text1">Login</a>
+                        <a href="/signup" class="switcher-text1 active">Register</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 fxt-bg-color">
+                    <div class="fxt-content">                        
+                        <div class="fxt-header">
+                         <h2 style="margin-left: -20px;"><a  class="navbar-brand ml-4" href="/"><b style="font-size: 35px;" id="logo" ><span style=" color: #f69323;">Mobi</span><span style="color: #000;">hub</span> </b> </a></h2>                           
+
+                        </div>
+                        <div class="fxt-form">
+                            <div class="fxt-transformY-50 fxt-transition-delay-1">   
+                                <h2>Register</h2>   
+                            </div>
+                            <div class="fxt-transformY-50 fxt-transition-delay-2">     
+                                <p>Create an account free and start shopping!!!</p>
+                            </div>
+                            <form action="/signup" method="POST">
+                                <div class="form-group">                                                
+                                    <div class="fxt-transformY-50 fxt-transition-delay-1">                                                
+                                        <input type="text" class="form-control" name="Name" placeholder="Name" required="required">
+                                        <i class="flaticon-user"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">                                                
+                                    <div class="fxt-transformY-50 fxt-transition-delay-1">                                                
+                                        <input type="email" class="form-control" name="Email" placeholder="Email Address" required="required">
+                                        <i class="flaticon-envelope"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">                                                
+                                    <div class="fxt-transformY-50 fxt-transition-delay-2">                                                
+                                        <input type="password" class="form-control" name="Password" placeholder="Password" required="required">
+                                        <i class="flaticon-padlock"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-3">
+                                        <button type="submit" class="fxt-btn-fill">Register</button>
+                                    </div>
+                                </div>
+                            </form>                            
+                        </div> 
+                    </div>
+                </div>                
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- jquery-->
+
+    <script src="/userlogin/js/jquery-3.5.0.min.js"></script>
+    <!-- Popper js -->
+    <script src="/userlogin/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/userlogin/js/bootstrap.min.js"></script>
+    <!-- Imagesloaded js -->
+    <script src="/userlogin/js/imagesloaded.pkgd.min.js"></script>  
+     <!-- Vegas js -->
+     <script src="/userlogin/js/vegas.min.js"></script>  
+    <!-- Validator js -->
+    <script src="/userlogin/js/validator.min.js"></script>
+    <!-- Custom Js -->
+    <script src="/userlogin/js/main.js"></script>
+
+</body>
+

@@ -1,37 +1,44 @@
-    <header style="background-color:#5a8ce0; "><nav  class="navbar navbar-expand-lg " >
-  <button  class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"  aria-expanded="false" aria-label="Toggle navigation">
-    <span style="background-color: white;" class="navbar-toggler-icon"></span>
-  </button>
-  <h3><a style="color: white;" class="navbar-brand ml-4" href="/">Shopping Cart</a></h3>
+<header  style="background-color:#424544 ">
+  <nav  class="navbar navbar-expand-lg " >
 
-  <div  class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item ">
-        <a  class="nav-link" href="/" style="font-size: 18px; color: white;">Products <span class="sr-only"></span></a>
-      </li>
+  <button   class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"  aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ 
+ 
+   <img  style="margin-bottom: 5px;" src="/images/mobile-marketing-3-48.ico" alt="" srcset="">
+
+   <h2 style="margin-left: -15px;"><a  class="navbar-brand ml-4" href="/"><b style="font-size: 35px;" id="logo" ><span style=" color: #f69323;">Mobi</span><span style="color: #fff;">hub</span> </b> </a></h2>
+ 
+
+  <div style="margin-left: 750px;"  class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
+            </li>
+      
+      <li class="nav-item" style=" margin-top: 7px;">
+             <a  href="/cart"> <img style=" margin-top: -5px; width: 25px; height: 25px;" src="/images/cart-73-32.ico" alt=""><span style="font-size: 18px ; color: #ffff; font-family: sans-serif;"> Cart</span> </a>  <span class="badge badge-success" style="background-color:#ffc17a; color: #424544;" id="cart-count">{{cartCount}}</span> 
+{{#if user}}
       <li class="nav-item">
-        <a style="color: white; font-size: 18px; " class="nav-link" href="/cart">Cart <span class="badge badge-success" id="cart-count">{{cartCount}}</span></a>
-      </li>
-      {{#if user}}
-      <li class="nav-item">
-        <a style="color: white; font-size: 18px; " class="nav-link" href="/orders">Orders</a>
+        <a style="font-family: sans-serif; color: white; font-size: 18px; margin-left: 20px;" class="nav-link" href="/orders">Orders</a>
       </li>
       {{/if}}
+      
     </ul>
 <div class="dropdown">
-  <button style="border-color: #5a8ce0; margin-left: -10px; background-color:#5a8ce0; " class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{# if user}}
-    {{user.Name}}
+  <button style="border-color: #424544;  background-color:#424544; " class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{#if user}}
+    <b style="font-family:sans-serif; color:#fff;">{{user.Name}}</b>
     {{else}}
-        Account
+     <b style="font-family:sans-serif; color:#fff;">Account</b>
     {{/if}}
 
   </button>
-  <div style="min-width: 1rem;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-       {{# if user}}
-    <a id="logout" class="dropdown-item" href="/logout">Logout</a>
+
+  <div style="background-color: #424544; min-width: 1rem; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+       {{#if user}}
+    <a style="color: #ffff; background-color: #424544; " id="logout" class="dropdown-item" href="/logout"><b>Logout</b></a>
     {{else}}
-    <a  class="dropdown-item" href="/login">Login</a>
+    <a  style="color: #fff; background-color: #424544;" class="dropdown-item" href="/login"><b>Login</b></a>
     {{/if}}
   
   </div>
@@ -39,3 +46,10 @@
   </div>
 </nav>
 </header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  #logo{
+font-family: 'Poppins', sans-serif;
+}
+</style>

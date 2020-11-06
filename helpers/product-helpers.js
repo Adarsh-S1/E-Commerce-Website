@@ -1,9 +1,33 @@
 var db=require('../config/connection')
 var collection=require('../config/collections')
+const bcrypt=require('bcrypt')
 const { response } = require('express')
 const { placeOrder} = require('./user-helper')
 var objectId=require('mongodb').ObjectID
 module.exports={
+      
+    doAdminLogin:(adminData)=>{
+        return new Promise(async(resolve,reject)=>{
+          let status=false
+          let admin=await db.get().collection(collection.ADMIN_COLLECTION).findOne({email:adminData.email})
+          if(admin){
+           bcrypt.compare(adminData.pass,admin.pass).then((status)=>{
+             if(status){
+               console.log("Success");
+               response.admin=admin
+               response.status=true
+               resolve(response)
+             }else{
+               resolve({status:false})
+             }
+  
+           })
+          }else{
+            resolve({status:false})
+          }
+        })
+      },
+
     addProduct:(product,callback)=>{
         product.Price=parseInt(product.Price)
     db.get().collection('product').insertOne(product).then((data)=>{
@@ -53,6 +77,5 @@ module.exports={
         .find(placeOrder.orderObject).toArray()
              resolve(orders)
          })
-       
     }
 }

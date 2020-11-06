@@ -17,7 +17,7 @@ let cartCount=null
 if(req.session.user){
 cartCount=await userHelpers.getCartCount(req.session.user._id)
 }productHelpers.getAllProducts().then((products)=>{
-    res.render('../views/user/view-products',{products,user,cartCount})
+    res.render('../views/user/view-products',{products,user,cartCount,userhead:true})
 
   })
 });
@@ -65,14 +65,15 @@ router.get('/cart',verifyLogin,async(req,res)=>{
    totalValue=await userHelpers.getTotalAmount(req.session.user._id)
   }
   if(products.length===0){
-    res.render('user/cart-zero',{products,user:req.session.user._id,totalValue})
+    res.render('user/cart-zero',{products,user:req.session.user._id,totalValue,userhead:true})
+    res.reload()
   }
-  res.render('user/cart',{products,user:req.session.user._id,totalValue})
+  res.render('user/cart',{products,user:req.session.user._id,totalValue,userhead:true})
 })
 router.get('/add-to-cart/:id',(req,res)=>{
   userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
      res.json({status:true})
-  })
+    })
 })
 router.post('/change-product-quantity',(req,res,next)=>{
   userHelpers.changeProductQuantity(req.body).then(async(response)=>{
@@ -82,7 +83,7 @@ router.post('/change-product-quantity',(req,res,next)=>{
 })
 router.get('/place-order',verifyLogin,async(req,res)=>{
  let total=await userHelpers.getTotalAmount(req.session.user._id)
-     res.render('user/place-order',{total,user:req.session.user})
+     res.render('user/place-order',{total,user:req.session.user,userhead:true})
 })
 router.post('/place-order',async(req,res)=>{
  let products=await userHelpers.getCartProductList(req.body.userId)
@@ -99,15 +100,15 @@ router.post('/place-order',async(req,res)=>{
 })
 })
 router.get('/order-success',(req,res)=>{
-  res.render('user/order-success',{user:req.session.user})
+  res.render('user/order-success',{user:req.session.user,userhead:true})
 })
 router.get('/orders',async(req,res)=>{
   let orders=await userHelpers.getUserOrders(req.session.user._id)
-  res.render('user/orders',{user:req.session.user,orders})
+  res.render('user/orders',{user:req.session.user,orders,userhead:true})
 })
 router.get('/view-order-products/:id',async(req,res)=>{
   let products=await userHelpers.getOrderProducts(req.params.id)
-  res.render('user/view-order-products',{user:req.session.user,products})
+  res.render('user/view-order-products',{user:req.session.user,products,userhead:true})
 })
 router.post('/verify-payment',(req,res)=>{
   console.log(req.body);

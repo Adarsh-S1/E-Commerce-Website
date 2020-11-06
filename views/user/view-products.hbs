@@ -1,11 +1,41 @@
+<section class="mt-4">
+   <div id="carouselExampleIndicators" class="carousel slide col-md-12" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://www.reliancedigital.in/medias/Samsung-Galaxy-M51-CLP-Banner-13-10-2020.jpg?context=bWFzdGVyfGltYWdlc3wxNjg4MjB8aW1hZ2UvanBlZ3xpbWFnZXMvaDE5L2hlNy85NDAyNTM1MTE2ODMwLmpwZ3xiNDZkMTg1MjI3YWQzNTM1ZTY2MGQ5NGY0MDgxMTNmZmQyYTQyOTE0YWFkYTg2YzA2NmY4MGFmZWIyMWIxZGM3" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.reliancedigital.in/medias/Redmi-9-Pro-Max-Home-Page-Banner-11-09-2020.jpg?context=bWFzdGVyfGltYWdlc3w1NjU5NnxpbWFnZS9qcGVnfGltYWdlcy9oY2MvaDBhLzkzODIzMDE0OTk0MjIuanBnfDhkMzg2OWZhNGQ0N2E0NDI5ZDdkZGU0MDI2YzJmOTgxM2Q1YjdiMTU0OWQxZjUwYzI0ZTczZGM3YWQ5OTE3Zjk" alt="Second slide">
+    </div>
+          <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.reliancedigital.in/medias/Apple-iPhone-12-Home-Page-Banner-Available-now-27-10-2020.jpg?context=bWFzdGVyfGltYWdlc3wzMzgxNHxpbWFnZS9qcGVnfGltYWdlcy9oN2UvaDFmLzk0MTI5NjU0NjYxNDIuanBnfDBhZjNhZTFkNjNkMmIwM2RkZTQ0Zjc4NWFlOWJkNGRhNjJlYTM5MmNmMzE2YzEzZDJiOWIwMGRiNGI2NGU0OTY" alt="Second slide">
+    </div>
+          <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.reliancedigital.in/medias/Samsung-M-Series-Home-Page-Banner.jpg?context=bWFzdGVyfGltYWdlc3wxMDE2NjR8aW1hZ2UvanBlZ3xpbWFnZXMvaDQ4L2g1OC85NDAxOTU2NjMwNTU4LmpwZ3w1YjhkNzYyZjdjNDVhZTViMjU4M2E3MTgwYTgyZWNlOTU2NDM5N2EyOWY5YzJmOWFmMzE2MTUzOWRhYTcwZGY1" alt="Second slide">
+    </div>
+          <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.reliancedigital.in/medias/Apple-iPhone-12-Pro-Home-Page-Banner-Available-now-27-10-2020.jpg?context=bWFzdGVyfGltYWdlc3wzMzE4MXxpbWFnZS9qcGVnfGltYWdlcy9oOWEvaGYwLzk0MTI5NjU2NjI3NTAuanBnfGNmNmVmOTE3NmM3YTc4NzZjMDdjZTE2OWIxODdjNGFkMjE1MTdhNzM4MWFmMmZjZjc4NjU4MzgzMzA5Mzk4ZmQ" alt="Second slide">
+    </div>
+  </div>
+
+  </div>
+
+</section>
 <section>
+
 <div class="container mt-5">
   <div class="row">
     {{#each products}}
-    
     <div class="col-md-3 p-3" >
      <div class="card"  >
-          <center><img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height: 200px; width:140px; padding-top: 5px;"></center>    
+          <center><img id="cards" class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap" style="height: 200px; width:140px; padding-top: 5px;"></center>    
       <div class="card-body">
       <center><h5 style="color: #212121;" class="card-title">{{this.Name}}</h5></center> 
              <center><h5><p style="color: #388e3c; font-size: 18px;" class="card-text">₹ {{this.Price}}</p></h5></center>
@@ -23,6 +53,8 @@
  
 </section>
 
-<script>
- 
-</script>
+<style>
+  #cards{
+
+  }
+</style>
