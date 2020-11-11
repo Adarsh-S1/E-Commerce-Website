@@ -16,11 +16,19 @@ let user=req.session.user
 let cartCount=null
 if(req.session.user){
 cartCount=await userHelpers.getCartCount(req.session.user._id)
-}productHelpers.getAllProducts().then((products)=>{
-    res.render('../views/user/view-products',{products,user,cartCount,userhead:true})
-
-  })
-});
+}  
+res.render('../views/user/home',{user,cartCount,userhead:true})
+})
+router.get('/products', async function(req, res, next) {
+  let user=req.session.user
+  let cartCount=null
+  if(req.session.user){
+  cartCount=await userHelpers.getCartCount(req.session.user._id)
+  }productHelpers.getAllProducts().then((products)=>{
+      res.render('../views/user/view-products',{products,user,cartCount,userhead:true})
+  
+    })
+  });
 router.get('/login',(req,res)=>{
   if(req.session.user)
   {
@@ -122,4 +130,10 @@ router.post('/verify-payment',(req,res)=>{
     res.json({status:false,errMsg:''})
   })
 })
+router.get('/delete-cart-product/:id',(req,res)=>{
+  let proId=req.params.id
+  productHelpers.deleteProduct(proId).then((response)=>{
+    res.redirect('/cart')
+  })
+  })
 module.exports = router;

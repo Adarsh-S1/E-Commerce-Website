@@ -1,51 +1,77 @@
-<header  style="background-color:#424544 ">
-  <nav  class="navbar navbar-expand-lg " >
 
-  <button   class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"  aria-expanded="false" aria-label="Toggle navigation">
+
+
+<nav style="position: fixed; width: 100%; z-index: 1000;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar ">
+  <a class="navbar-brand" href="#">
+     <img  src="/images/mobile-marketing-3-48.ico" alt="" srcset=""><br>
+        <h2 style="margin-bottom: -1px;"><a class="navbar-brand" href="/" style=" font-size: 35px; margin-left: -20px;" id="logo" ><span style=" color: #f69323;">Mobi</span><span style="color: #fff;">hub</span>  </a></h2>
+
+  </a>
+</nav>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
- 
- 
-   <img  style="margin-bottom: 5px;" src="/images/mobile-marketing-3-48.ico" alt="" srcset="">
 
-   <h2 style="margin-left: -15px;"><a  class="navbar-brand ml-4" href="/"><b style="font-size: 35px;" id="logo" ><span style=" color: #f69323;">Mobi</span><span style="color: #fff;">hub</span> </b> </a></h2>
- 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="font-size: 18px ; color: #ffff; font-family: sans-serif;" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" style="font-size: 18px ; color: #ffff; font-family: sans-serif;" href="/products">Products<span class="sr-only">(current)</span></a>
+      </li>
 
-  <div style="margin-left: 750px;"  class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
-            </li>
-      
-      <li class="nav-item" style=" margin-top: 7px;">
-             <a  href="/cart"> <img style=" margin-top: -5px; width: 25px; height: 25px;" src="/images/cart-73-32.ico" alt=""><span style="font-size: 18px ; color: #ffff; font-family: sans-serif;"> Cart</span> </a>  <span class="badge badge-success" style="background-color:#ffc17a; color: #424544;" id="cart-count">{{cartCount}}</span> 
-{{#if user}}
+       <li class="nav-item">
+             <a  href="/cart"> <span style="font-size: 18px ; color: #ffff; font-family: sans-serif;" class="nav-link"> Cart  <img style=" width: 25px; height: 25px; margin-left: -5px;" src="/images/cart-73-32.ico" alt=""> <span class="badge" style="background-color:#ffc17a; font-size: 12px; margin-left: -15px; color: #424544; " id="cart-count" >{{cartCount}}</span></span></a> 
+      </li>
+
       <li class="nav-item">
-        <a style="font-family: sans-serif; color: white; font-size: 18px; margin-left: 20px;" class="nav-link" href="/orders">Orders</a>
+        {{#if user}}
+      <li class="nav-item">
+        <a style="font-family: sans-serif; color: white; font-size: 18px;" class="nav-link" href="/orders">Orders</a>
       </li>
       {{/if}}
-      
-    </ul>
-<div class="dropdown">
-  <button style="border-color: #424544;  background-color:#424544; " class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{#if user}}
+      </li>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" style="font-family: sans-serif; color: white; font-size: 18px;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          More
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #343a40;">
+          <a class="dropdown-item" style="background-color: #343a40;">
+    <a style="color: #ffff; background-color: #343a40;"  class="dropdown-item" href="/logout">About Us</a>
+    <a  style="color: #fff; background-color: #343a40;"  class="dropdown-item" href="/login">Contact Us</a>
+    </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  href="#" style="color: #fff;  background-color:#343a40; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{#if user}}
     <b style="font-family:sans-serif; color:#fff;">{{user.Name}}</b>
     {{else}}
      <b style="font-family:sans-serif; color:#fff;">Account</b>
+         <img style="margin-top: -6px;" height="20px" width="20px" src="../images/user-32.ico" alt="" srcset="">
+
     {{/if}}
-
-  </button>
-
-  <div style="background-color: #424544; min-width: 1rem; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-       {{#if user}}
-    <a style="color: #ffff; background-color: #424544; " id="logout" class="dropdown-item" href="/logout"><b>Logout</b></a>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #343a40;">
+          <a class="dropdown-item" style="background-color: #343a40;">
+    
+     {{#if user}}
+    <a style="color: #ffff; background-color: #343a40;" id="logout" class="dropdown-item" href="/logout"><b>Logout</b></a>
     {{else}}
-    <a  style="color: #fff; background-color: #424544;" class="dropdown-item" href="/login"><b>Login</b></a>
-    {{/if}}
-  
-  </div>
-</div>
+    <a  style="color: #fff; background-color: #343a40;"  class="dropdown-item" href="/login"><b>Login</b></a>
+    {{/if}}</a>
+        </div>
+      </li>
+
+    </ul>
   </div>
 </nav>
-</header>
+
+
+
+
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
