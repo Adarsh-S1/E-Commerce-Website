@@ -211,11 +211,14 @@ module.exports={
        products:products,
        totalAmount:total,
        status:status,
-       date:new Date()
+       day:new Date().getDate(),
+       month:new Date().getMonth(),
+       year:new Date().getFullYear()
        } 
        db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-        db.get().collection(collection.CART_COLLECTION).removeOne({user:objectId(order.userId)}) 
-         console.log("Order id:"+response.ops[0]._id);
+         if(status=='Placed'){
+        db.get().collection(collection.CART_COLLECTION).removeOne({user:objectId(order.userId)})
+         } 
         resolve(response.ops[0]._id)
        })
       })
@@ -309,6 +312,15 @@ module.exports={
         resolve()
       })
     })
+  },
+  deleteCartProduct:(details)=>{
+    return new Promise(async(resolve,reject)=>{
+    db.get().collection(collection.CART_COLLECTION).updateOne({_id:objectId(details.cart)},
+    {
+      $pull:{products:{item:objectId(details.product)}}
+    }).then((response)=>{
+      resolve({removeProduct:true})
+    })
+    })
+    }
   }
-}
-  

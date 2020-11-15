@@ -67,16 +67,16 @@ router.get('/logout',(req,res)=>{
   res.redirect('/')
 })
 router.get('/cart',verifyLogin,async(req,res)=>{
+
   let products=await userHelpers.getCartProducts(req.session.user._id)
   let totalValue=0
   if(products.length>0){
    totalValue=await userHelpers.getTotalAmount(req.session.user._id)
+   res.render('user/cart',{products,user:req.session.user._id,totalValue,userhead:true})
   }
-  if(products.length===0){
-    res.render('user/cart-zero',{products,user:req.session.user._id,totalValue,userhead:true})
-    res.reload()
+  else{
+    res.render('user/cart-zero',{user:req.session.user,userhead:true})
   }
-  res.render('user/cart',{products,user:req.session.user._id,totalValue,userhead:true})
 })
 router.get('/add-to-cart/:id',(req,res)=>{
   userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
@@ -130,10 +130,11 @@ router.post('/verify-payment',(req,res)=>{
     res.json({status:false,errMsg:''})
   })
 })
-router.get('/delete-cart-product/:id',(req,res)=>{
-  let proId=req.params.id
-  productHelpers.deleteProduct(proId).then((response)=>{
-    res.redirect('/cart')
+router.post('/delete-cart-product',(req,res)=>{
+  console.log(req.body);
+  userHelpers.deleteCartProduct(req.body).then(async(response)=>{
+    response.total=await userHelpers.getTotalAmount(req.body.user)
+    res.json(response)
   })
   })
 module.exports = router;

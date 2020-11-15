@@ -45,6 +45,7 @@
 <h2 class="h5" style="color: #fb641b;">{{this.product.Name}}</td></h2>
 </td>
 <td>
+    <center>
 <div class="input-group mb-3" style="max-width: 120px;">
 <div class="input-group-prepend">
 <button class="cart-item-count btn btn-outline-black js-btn-minus" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user}}',-1)" type="button">&minus;</button>
@@ -53,10 +54,10 @@
 <div class="input-group-append">
 <button class="cart-item-count btn btn-outline-black js-btn-plus" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user}}',1)" type="button">&plus;</button>
 </div>
-</div>
+</div></center>
 </td>
 <td style="color: #388e3c;">₹ {{this.product.Price}}</td>
-<td><a href="#"><img src="/images/trash-9-24.ico" alt="" srcset=""></a></td>
+<td><button class="cart-item-count btn" style="background-color: #fff;" onclick="deleteCartPro('{{this._id}}','{{this.product._id}}','{{../user}}')" type="button"><img src="/images/trash-9-24.ico" alt="" srcset=""></button></td>
 </tr>
 {{/each}}
 </tbody>
@@ -131,6 +132,26 @@
                     document.getElementById('total').innerHTML=response.total
                 }
                 
+            }
+        })
+    }
+    function deleteCartPro(cartId,proId,userId,count,quantity)
+        {
+        $.ajax({
+            url:'/delete-cart-product',
+            data:{
+                user:userId,
+                cart:cartId,
+                product:proId,
+                count:count,
+                quantity:quantity
+            },
+            method:'post',
+            success:(response)=>{
+                if(response.removeProduct){
+                    alert("Product removed from the cart")
+                    location.reload()
+                }     
             }
         })
     }
