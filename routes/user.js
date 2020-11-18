@@ -137,4 +137,10 @@ router.post('/delete-cart-product',(req,res)=>{
     res.json(response)
   })
   })
+  router.get('/about',(req,res)=>{
+    res.render('user/about-us',{user:req.session.user,userhead:true})
+  })
+  router.get('/contact',(req,res)=>{
+    res.render('user/contact-us',{user:req.session.user,userhead:true})
+  })
 module.exports = router;

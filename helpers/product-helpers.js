@@ -77,5 +77,11 @@ module.exports={
         .find(placeOrder.orderObject).toArray()
              resolve(orders)
          })
+    },
+    userData:()=>{
+        return new Promise(async(resolve,reject)=>{
+            let users=db.get().collection(collection.USER_COLLECTION).find().toArray()
+            resolve(users)
+        })
     }
 }

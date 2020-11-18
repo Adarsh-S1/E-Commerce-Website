@@ -2,7 +2,13 @@ var express = require('express');
 const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
 var hbsHelpers = require('../helpers/hbs-helpers');
-
+const adminLogin=(req,res,next)=>{
+  if(req.session.loggedAdminIn){
+    next()
+  }else{
+    res.redirect('/admin/login')
+  }
+}
 router.get('/', function(req,res) {
   productHelpers.getAllProducts().then((products)=>{
     let findex=hbsHelpers.formatIndex;
@@ -36,7 +42,7 @@ router.get('/adminout',function(req,res){
   req.session.destroy()
   res.redirect('/admin/login')
 })
-  router.get('/add-product',function(req,res){
+  router.get('/add-product',adminLogin,function(req,res){
     res.render('admin/add-product')
   })
 
@@ -57,13 +63,13 @@ router.post('/add-product',(req,res)=>{
   })
 })
 
-router.get('/delete-product/:id',(req,res)=>{
+router.get('/delete-product/:id',adminLogin,(req,res)=>{
 let proId=req.params.id
 productHelpers.deleteProduct(proId).then((response)=>{
   res.redirect('/admin/')
 })
 })
-router.get('/edit-product/:id',async (req,res)=>{
+router.get('/edit-product/:id',adminLogin,async (req,res)=>{
   let product=await productHelpers.getProductDetails(req.params.id)
   console.log(product);
   res.render('admin/edit-product',{product})
@@ -81,9 +87,14 @@ router.post('/edit-product/:id',(req,res)=>{
     }
   })
 })
-router.get('/all-orders',async (req,res)=>{
+router.get('/all-orders',adminLogin,async (req,res)=>{
   let userorders=await productHelpers.getOrders(req.body)
   let findex=hbsHelpers.formatIndex;
   res.render('admin/all-orders.hbs',{admin:true,helpers:{findex},userorders})
+})
+router.get('/all-users',adminLogin,(req,res)=>{
+  productHelpers.userData().then((users)=>{
+  res.render('admin/allusers',{admin:true,users})
+})
 })
 module.exports = router;

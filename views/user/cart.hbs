@@ -14,8 +14,8 @@
 <div class="container">
 <div class="row align-items-end">
 <div class="col-lg-7">
-<h1>Cart</h1>
-<p class="mb-4"><a href="/products">Home</a> / <strong>Cart</strong></p>
+<h1 style="color: #f8ab53;">Cart</h1>
+<p class="mb-4"><a style="color: #fd8700;" href="/products">Home</a> / <strong >Cart</strong></p>
 </div>
 </div>
 </div>
@@ -69,7 +69,7 @@
 <div class="col-md-6">
 <div class="row mb-5">
 <div class="col-md-6 mb-3 mb-md-0">
-    <a href="/products"><button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button></a>
+    <a  href="/products"><button id="continue" class="btn  btn-sm btn-block">Continue Shopping</button></a>
 </div>
 </div>
 </div>
@@ -91,7 +91,7 @@
 </div>
 <div class="row">
 <div class="col-md-12">
-<a href="/place-order"><button class="btn btn-black btn-lg py-3 btn-block">Proceed To Checkout</button></a>
+<a href="/place-order"><button id="proceed" class="btn btn-lg py-3 btn-block">Proceed To Checkout</button></a>
 </div>
 </div>
 </div>
@@ -106,6 +106,29 @@
 <script src="../cart/js/aos.js"></script>
 <script src="../cart/js/custom.js"></script>
 
+<style>
+    #proceed{
+     background-color: black;
+     color: #fff;
+     border-radius: 10px;
+    }
+    #proceed:hover{
+        background-color: #f69323;
+        color: black;
+        transition-delay: 50ms;
+        transition-duration: 300ms;
+    }
+    #continue{
+     background-color: black;
+     color: #fff;
+    }
+    #continue:hover{
+        background-color: #f69323;
+        color: black;
+        transition-delay: 50ms;
+        transition-duration: 300ms;
+    }
+</style>
 
 <script>
     function changeQuantity(cartId,proId,userId,count)
