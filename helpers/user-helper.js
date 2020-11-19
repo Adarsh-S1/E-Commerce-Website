@@ -201,9 +201,12 @@ module.exports={
        let status=order['payment-method']==='COD'?'Placed':'Pending'
        let orderObj={
        deliveryDetails:{
-         name:order.name,
+         firstname:order.firstname,
+         lastname:order.lastname,
          mobile:order.mobile,
          address:order.address,
+         streetaddress:order.streetaddress,
+         state:order.state,
          pincode:order.pincode
        },
        userId:objectId(order.userId),
@@ -216,7 +219,7 @@ module.exports={
        year:new Date().getFullYear()
        } 
        db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-         if(status=='Placed'){
+         if(status=='Placed' || 'placed'){
         db.get().collection(collection.CART_COLLECTION).removeOne({user:objectId(order.userId)})
          } 
         resolve(response.ops[0]._id)
