@@ -107,14 +107,14 @@ router.post('/place-order',async(req,res)=>{
   //res.json({status:true})
 })
 })
-router.get('/order-success',(req,res)=>{
+router.get('/order-success',verifyLogin,(req,res)=>{
   res.render('user/order-success',{user:req.session.user,userhead:true})
 })
-router.get('/orders',async(req,res)=>{
+router.get('/orders',verifyLogin,async(req,res)=>{
   let orders=await userHelpers.getUserOrders(req.session.user._id)
   res.render('user/orders',{user:req.session.user,orders,userhead:true})
 })
-router.get('/view-order-products/:id',async(req,res)=>{
+router.get('/view-order-products/:id',verifyLogin,async(req,res)=>{
   let products=await userHelpers.getOrderProducts(req.params.id)
   res.render('user/view-order-products',{user:req.session.user,products,userhead:true})
 })
@@ -130,7 +130,7 @@ router.post('/verify-payment',(req,res)=>{
     res.json({status:false,errMsg:''})
   })
 })
-router.post('/delete-cart-product',(req,res)=>{
+router.post('/delete-cart-product',verifyLogin,(req,res)=>{
   console.log(req.body);
   userHelpers.deleteCartProduct(req.body).then(async(response)=>{
     response.total=await userHelpers.getTotalAmount(req.body.user)

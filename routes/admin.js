@@ -90,11 +90,17 @@ router.post('/edit-product/:id',(req,res)=>{
 router.get('/all-orders',adminLogin,async (req,res)=>{
   let userorders=await productHelpers.getOrders(req.body)
   let findex=hbsHelpers.formatIndex;
-  res.render('admin/all-orders.hbs',{admin:true,helpers:{findex},userorders})
+  let productsdetails=await productHelpers.OrdersAdmin(req.params.id)
+  res.render('admin/all-orders.hbs',{admin:true,helpers:{findex},userorders,productsdetails})
 })
 router.get('/all-users',adminLogin,(req,res)=>{
   productHelpers.userData().then((users)=>{
   res.render('admin/allusers',{admin:true,users})
 })
+})
+router.get('/shipOrders/:id',(req,res)=>{
+  productHelpers.shippedStatus(req.params.id).then(()=>{
+    res.redirect('/admin/all-orders')
+  })
 })
 module.exports = router;
