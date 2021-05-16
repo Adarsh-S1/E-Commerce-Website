@@ -27,7 +27,27 @@ module.exports={
           }
         })
       },
-
+      register:(admin)=>{
+        return new Promise(async(resolve,reject)=>{
+          admin.pass = await bcrypt.hash(admin.pass, 10);
+          db.get()
+            .collection(collection.ADMIN_COLLECTION)
+            .insertOne(admin)
+            .then((admin) => {
+              resolve(admin);
+            });
+        })
+      },
+      adminCheck: () => {
+        return new Promise(async (resolve, reject) => {
+          db.get()
+            .collection(collection.ADMIN_COLLECTION)
+            .findOne({ Status: "inserted" })
+            .then((response) => {
+              resolve(response);
+            });
+        });
+      },
     addProduct:(product,callback)=>{
         product.Price=parseInt(product.Price)
     db.get().collection('product').insertOne(product).then((data)=>{

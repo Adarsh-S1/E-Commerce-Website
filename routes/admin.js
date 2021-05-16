@@ -21,12 +21,35 @@ router.get('/', function(req,res) {
   })
 });
 router.get('/login', function(req, res) {
+  productHelpers.adminCheck().then((response) => {
+    console.log(response);
+    if(response){
    if(req.session.admin){
      res.redirect('/admin')
    }else{
     res.render('admin/login')
    }
+  }else{
+    res.redirect("/admin/register");
+  }
   })
+  })
+  router.get('/register', function(req, res) {
+    productHelpers.adminCheck().then((response) => {
+    if(response)
+    {
+      res.redirect('/admin')
+    }
+    else{
+      res.render('admin/register')
+    }
+  })
+})
+  router.post('/register',(req,res)=>{
+   productHelpers.register(req.body).then(()=>{
+     res.redirect('/admin/login')
+    })
+  });
 router.post('/login',(req,res)=>{
   productHelpers.doAdminLogin(req.body).then((response)=>{
     if(response.status){
