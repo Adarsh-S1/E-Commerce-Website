@@ -5,6 +5,7 @@ const productHelpers = require('../helpers/product-helpers');
 const userHelpers=require("../helpers/user-helper")
 const verifyLogin=(req,res,next)=>{
   if(req.session.userLoggedIn){
+    console.log(req.session);
     next()
   }else{
     res.redirect('/login')
@@ -45,7 +46,7 @@ router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
     console.log(response);
     req.session.user=response
-    req.session.user.loggedIn=true
+    req.session.userLoggedIn=true
     res.redirect('/')
   })
 })
